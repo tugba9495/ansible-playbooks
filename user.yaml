@@ -1,0 +1,10 @@
+---
+  - name: add users to dev servers
+    hosts: dev
+    tasks:
+      - name: ping
+        ping:
+             
+      - name: add user bob
+        user:
+          name: bob
