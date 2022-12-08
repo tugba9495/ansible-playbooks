@@ -1,0 +1,14 @@
+---
+  - name: httpd installed
+    hosts: dev
+    tasks:
+      - name: httpd installed
+        ansible.builtin.yum:
+        
+      - name: enable service httpd
+        service:
+          name: httpd
+      - name: start service httpd
+        service:
+          name: httpd
+        
