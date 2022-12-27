@@ -1,0 +1,16 @@
+---
+- name: apache installation,enable,start the service
+  hosts: dev
+  tasks:
+    - name: install apache
+      yum:
+        name: httpd
+        state: latest
+    - name: start the service of apache
+      systemd:
+        name: httpd
+        state: started
+    - name: enable httpd 
+      systemd:
+        name: httpd
+        enabled: yes
