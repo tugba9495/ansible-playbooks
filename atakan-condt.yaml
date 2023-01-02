@@ -1,0 +1,22 @@
+---
+- name: install yum on CentOs servers
+  hosts: dev
+  gather_facts: yes
+  tasks:
+    - name: ping
+      when: ansible_distribution == "Ubuntu"
+      ping:
+    - name: install vim
+      when: ansible_distribution == "Ubuntu"
+      yum:
+    - name: start the service of apache
+      systemd:
+        name: httpd
+        state: started
+
+    - name: enable the service of apache
+      systemd:
+        name: httpd
+        enabled: yes
+    
+      

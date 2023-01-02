@@ -1,6 +1,16 @@
 ---
   - name: ping severs
-    hosts: host1
+    hosts: prod
+    gather_facts: true
+    vars:
+      a: 12
+      b: 14
     tasks:
-      - name: ping
+      - name: ping 1
         ping:
+        when: c == 12
+        register: ping1_result
+        ignore_errors: True
+      - name: ping 2
+        ping:
+        when: ping1_result is succeeded

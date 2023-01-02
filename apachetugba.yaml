@@ -1,0 +1,20 @@
+---
+- name: install Apache on host1
+  hosts: host1
+  gather_facts: True
+  tasks:
+    - name: install apache 
+      when: ansible_pkg_mgr == "yum"
+      yum: 
+        name: httpd
+        state: latest
+      register: install_apache_result
+
+    - name: copy index.html
+      when: install_apache_result
+      copy:
+         src: index.html
+         dest: /var/www/html/
+         owner: apache
+         group: apache
+         mode: '0664'

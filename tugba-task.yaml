@@ -3,7 +3,7 @@
   hosts: dev
   tasks:
     - name: install apache
-      yum:
+      yum: 
         name: httpd
         state: latest
     - name: start the service of apache
